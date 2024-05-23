@@ -1,0 +1,9 @@
+export const createForm = document.querySelector("#createForm");
+export const rowTemplate = document.querySelector("#rowTemplate");
+export const rowGroup = document.querySelector("#row-group");
+export const costTotal = document.querySelector("#costTotal");
+export const manageInventoryBtn = document.querySelector("#manageInventoryBtn");
+export const inventorySheet = document.querySelector("#inventorySheet");
+export const inventorySheetCloseBtn = document.querySelector("#inventorySheetCloseBtn");
+export const productGroup = document.querySelector("#productGroup");
+export const productTemplate = document.querySelector("#productTemplate")
