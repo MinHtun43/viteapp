@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+       <div class="heading"> 
+        <h1>Javascript</h1>
+        <h1 class="yel-col">Age Calculator</h1>
+       </div>
+        <div class="input-container">
+            <input class="date-input" type="date" id="date">
+            <button onclick="calculateAge()" class="btn">cal</button>
+        </div>
+        <div>
+            <p class="ans">You are <span id="year">_</span> years, <span id="month">_</span> months and  <span id="day">_</span> days old.</p>
+        </div>
+    </div>
+    <script>
+        const userInput = document.getElementById("date");
+        const inputYear = document.getElementById("year");
+        const inputMonth = document.getElementById("month");
+        const inputDay = document.getElementById("day");
+        userInput.max = new Date().toISOString().split("T")[0];
+
+        const calculateAge = () => {
+             const birthDate = new Date(userInput.value);
+
+             const birthDay = birthDate.getDate();
+             const birthMonth = birthDate.getMonth() + 1;
+             const birthYear = birthDate.getFullYear();
+
+             const todayDate = new Date();
+             const today = todayDate.getDate();
+             const todayMonth = todayDate.getMonth() + 1;
+             const todayYear = todayDate.getFullYear();
+
+             let calYear , calMonth , calDay;
+             calYear = todayYear - birthYear;
+
+             if(todayMonth >= birthMonth){
+                calMonth = todayMonth - birthMonth;
+             }else{
+                calYear--;
+                calMonth = 12 + todayMonth - birthMonth;
+             }
+
+             if(today >= birthDay){
+                calDay = today - birthDay;
+             }else{
+                calMonth--;
+                calDay = getDaysInMonth(birthYear , birthMonth) + today - birthDate;
+             }
+
+             if(calMonth < 0){
+                calMonth = 11;
+                calYear--;
+             }
+
+             inputYear.innerText = calYear;
+             inputMonth.innerText = calMonth;
+             inputDay.innerText = calDay;
+
+             function getDaysInMonth (year , month){
+                return new Date(year , month , 0).getDate();
+             }
+        }
+    </script>
+</body>
+</html>

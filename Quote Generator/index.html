@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main">
+         <div class="container">
+            <h1>Quote Generator</h1>
+            <div class="quoteNAuthor">
+                <h3 id="quote">You Can You will</h3>
+                <p id="author">By MMH</p>
+            </div>
+            <div class="btn-container">
+              <button id="generate" onclick="getQuotes(api_url)">Generate Quote</button>
+              <button>share</button>
+            </div>
+         </div>
+    </main>
+    <script>
+        const api_url = "https://api.quotable.io/random";
+        const quote = document.getElementById("quote");
+        const author = document.getElementById("author");
+        async function getQuotes(url){
+            const response = await fetch (url);
+            var data = await response.json();
+            quote.innerHTML = data.content;
+            author.innerHTML = data.author;
+        }
+        getQuotes(api_url);
+    </script>
+</body>
+</html>
